@@ -6,7 +6,7 @@
 /*   By: anaouali <anaouali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 10:49:49 by anaouali          #+#    #+#             */
-/*   Updated: 2024/02/15 18:22:56 by anaouali         ###   ########.fr       */
+/*   Updated: 2024/02/16 17:32:51 by anaouali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	check_map(char *map)
 		i++;
 	}
 	if (C_count != 1 || E_count != 1 || P_count != 1)
-			return (-1);
+		return (-1);
 	return (0);
 }
 
@@ -92,28 +92,26 @@ int	ft_strlen_of_one_line(char *str)
 	return (i);
 }
 
-int	check_rectangle(char *map)
+int	check_rectangle(char *map, t_slg *slg)
 {
-	t_slg 	slg;	
-	int		i;
-
-	slg.number_of_lines = count_line(map);
-	slg.rectangle = malloc(slg.number_of_lines + 1);
-	if (!slg.rectangle)
+	slg->number_of_lines = count_line(map);
+	slg->rectangle = malloc(slg->number_of_lines + 1);
+	if (!slg->rectangle)
 		return (-1);
-	slg.len_of_lines = ft_strlen_of_one_line(map);
-	slg.rectangle = ft_split(map, '\n');
-	return (check_walls(slg.rectangle, slg.number_of_lines, slg.len_of_lines));
+	slg->len_of_lines = ft_strlen_of_one_line(map);
+	slg->rectangle = ft_split(map, '\n');
+	return (check_walls(slg->rectangle, slg->number_of_lines,
+			slg->len_of_lines));
 }
 
-int	check_all(char *map)
+int	check_all(char *map, t_slg *slg)
 {
 	if (check_map(map) == -1)
 	{
 		ft_putstr_fd("invalid map\n", 1);
 		return (-1);
 	}
-	if (check_rectangle(map) == -1)
+	if (check_rectangle(map, slg) == -1)
 	{
 		ft_putstr_fd("invalid map\n", 1);
 		return (-1);
@@ -123,14 +121,12 @@ int	check_all(char *map)
 	return (0);
 }
 
-int	main(void)
+int	check(t_slg *slg)
 {
 	char	*line;
 	char	*map;
 	int		fd;
-	int		i;
 
-	i = 0;
 	map = "";
 	fd = open("./map0.ber", O_RDONLY);
 	line = get_next_line(fd);
@@ -142,6 +138,7 @@ int	main(void)
 			break ;
 		map = ft_strjoin(map, line);
 	}
-	check_all(map);
+	if (check_all(map, slg) == -1)
+		return (-1);
 	return (0);
 }

@@ -1,6 +1,6 @@
 NAME = so_long
 
-SRCS = so_long.c img_to_xpm.c 
+SRCS = main.c img_to_xpm.c  check_map.c create_base_map.c
 
 LIBFT = libft.a
 

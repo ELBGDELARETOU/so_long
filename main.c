@@ -1,16 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   version_final.c                                    :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anaouali <anaouali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/15 18:16:05 by anaouali          #+#    #+#             */
-/*   Updated: 2024/02/15 18:16:48 by anaouali         ###   ########.fr       */
+/*   Created: 2024/02/16 12:15:03 by anaouali          #+#    #+#             */
+/*   Updated: 2024/02/16 17:31:56 by anaouali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int main(int argc, char **argv)
+#include "so_long.h"
+
+int	main(void)
 {
-    check_map;
+	t_slg slg;
+
+	ft_memset(&slg, 0, sizeof(t_slg));
+	if (check(&slg) == -1)
+		return (-1);
+	// printf("%d", slg.number_of_lines);
+	// printf("%d", slg.len_of_lines);
+	if (create_base_map(&slg) == -1)
+		return (-1);
 }
