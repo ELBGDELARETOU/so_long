@@ -6,7 +6,7 @@
 /*   By: anaouali <anaouali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 10:49:49 by anaouali          #+#    #+#             */
-/*   Updated: 2024/02/16 17:32:51 by anaouali         ###   ########.fr       */
+/*   Updated: 2024/02/17 17:36:12 by anaouali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,19 +55,15 @@ int	check_walls(char **map, int number_of_lines, int len_of_lines)
 
 int	check_map(char *map)
 {
-	int	C_count;
 	int	E_count;
 	int	P_count;
 	int	i;
 
-	C_count = 0;
 	E_count = 0;
 	P_count = 0;
 	i = 0;
 	while (map[i] != '\0')
 	{
-		if (map[i] == 'C')
-			C_count++;
 		if (map[i] == 'E')
 			E_count++;
 		if (map[i] == 'P')
@@ -77,7 +73,7 @@ int	check_map(char *map)
 			return (-1);
 		i++;
 	}
-	if (C_count != 1 || E_count != 1 || P_count != 1)
+	if (E_count != 1 || P_count != 1)
 		return (-1);
 	return (0);
 }

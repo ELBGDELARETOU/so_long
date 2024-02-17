@@ -6,7 +6,7 @@
 /*   By: anaouali <anaouali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 16:05:26 by anaouali          #+#    #+#             */
-/*   Updated: 2024/02/16 17:30:33 by anaouali         ###   ########.fr       */
+/*   Updated: 2024/02/17 19:04:45 by anaouali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,20 @@ typedef struct slg
 	void	*img_white_left;
 	void	*img_white_right;
 
+	void	*key[4];
+
+	void	*key_outline_1;
+	void	*key_outline_2;
+	void	*key_outline_3;
+	void	*key_outline_4;
+
+	void	*door1;
+	void	*door2;
+
+	void	*hero[4];
+	
+	void	*img_interior_walls;
+
 	char	*path;
 	int		img_width;
 	int		img_height;
@@ -69,7 +83,7 @@ int			check(t_slg *slg);
 
 // fonciton d'initialisation de la map de base
 int			create_base_map(t_slg *slg);
-void		init_base(t_slg slg);
+int		init_base(t_slg slg);
 void		init_background(t_slg slg);
 void		init_walls(t_slg slg);
 void		init_white_walls(t_slg slg);

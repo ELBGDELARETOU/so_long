@@ -6,7 +6,7 @@
 /*   By: anaouali <anaouali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 18:07:26 by anaouali          #+#    #+#             */
-/*   Updated: 2024/02/14 12:08:15 by anaouali         ###   ########.fr       */
+/*   Updated: 2024/02/17 18:46:30 by anaouali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ void	convert_img(t_slg *slg)
 			"img/Longwall-right.xpm", &slg->img_width, &slg->img_height);
 	slg->img_floor = mlx_xpm_file_to_image(slg->mlx, "img/White.xpm",
 			&slg->img_width, &slg->img_height);
+	slg->img_white_right_corner = mlx_xpm_file_to_image(slg->mlx,
+			"img/White-top-right.xpm", &slg->img_width, &slg->img_height);
 }
 
 void	convert_img2(t_slg *slg)
 {
-	slg->img_white_right_corner = mlx_xpm_file_to_image(slg->mlx,
-			"img/White-top-right.xpm", &slg->img_width, &slg->img_height);
 	slg->img_white_left_corner = mlx_xpm_file_to_image(slg->mlx,
 			"img/White-top-left.xpm", &slg->img_width, &slg->img_height);
 	slg->img_white_bottom_left = mlx_xpm_file_to_image(slg->mlx,
@@ -54,4 +54,34 @@ void	convert_img2(t_slg *slg)
 			"img/White-mid-left.xpm", &slg->img_width, &slg->img_height);
 	slg->img_white_right = mlx_xpm_file_to_image(slg->mlx,
 			"img/White-mid-right.xpm", &slg->img_width, &slg->img_height);
+	slg->img_interior_walls = mlx_xpm_file_to_image(slg->mlx,
+			"img/interior_walls.xpm", &slg->img_width, &slg->img_height);
+	slg->key[0] = mlx_xpm_file_to_image(slg->mlx, "img/Key1.xpm", &slg->img_width,
+			&slg->img_height);
+	slg->key[1] = mlx_xpm_file_to_image(slg->mlx, "img/Key2.xpm", &slg->img_width,
+			&slg->img_height);
+	slg->key[2] = mlx_xpm_file_to_image(slg->mlx, "img/Key3.xpm", &slg->img_width,
+			&slg->img_height);
+	slg->key[3] = mlx_xpm_file_to_image(slg->mlx, "img/Key4.xpm", &slg->img_width,
+			&slg->img_height);
+	slg->key_outline_1 = mlx_xpm_file_to_image(slg->mlx, "img/Key1.xpm",
+			&slg->img_width, &slg->img_height);
+	slg->key_outline_2 = mlx_xpm_file_to_image(slg->mlx, "img/Key2.xpm",
+			&slg->img_width, &slg->img_height);
+	slg->key_outline_3 = mlx_xpm_file_to_image(slg->mlx, "img/Key3.xpm",
+			&slg->img_width, &slg->img_height);
+	slg->key_outline_4 = mlx_xpm_file_to_image(slg->mlx, "img/Key4.xpm",
+			&slg->img_width, &slg->img_height);
+	slg->door1 = mlx_xpm_file_to_image(slg->mlx, "img/door1.xpm",
+			&slg->img_width, &slg->img_height);
+	slg->door2 = mlx_xpm_file_to_image(slg->mlx, "img/door2.xpm",
+			&slg->img_width, &slg->img_height);
+	slg->hero[0] = mlx_xpm_file_to_image(slg->mlx, "img/hero1.xpm",
+			&slg->img_width, &slg->img_height);
+	slg->hero[1] = mlx_xpm_file_to_image(slg->mlx, "img/hero2.xpm",
+			&slg->img_width, &slg->img_height);
+	slg->hero[2] = mlx_xpm_file_to_image(slg->mlx, "img/hero3.xpm",
+			&slg->img_width, &slg->img_height);
+	slg->hero[3] = mlx_xpm_file_to_image(slg->mlx, "img/hero4.xpm",
+			&slg->img_width, &slg->img_height);
 }
