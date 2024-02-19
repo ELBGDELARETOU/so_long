@@ -1,24 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   moovs.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anaouali <anaouali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/16 12:15:03 by anaouali          #+#    #+#             */
-/*   Updated: 2024/02/19 11:05:43 by anaouali         ###   ########.fr       */
+/*   Created: 2024/02/17 19:28:16 by anaouali          #+#    #+#             */
+/*   Updated: 2024/02/19 19:53:43 by anaouali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-int	main(void)
-{
-	t_slg slg;
-
-	ft_memset(&slg, 0, sizeof(t_slg));
-	if (check(&slg) == -1)
-		return (-1);
-	if (create_base_map(&slg) == -1)
-		return (-1);
-}

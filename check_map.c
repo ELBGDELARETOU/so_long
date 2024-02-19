@@ -6,7 +6,7 @@
 /*   By: anaouali <anaouali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 10:49:49 by anaouali          #+#    #+#             */
-/*   Updated: 2024/02/17 17:36:12 by anaouali         ###   ########.fr       */
+/*   Updated: 2024/02/19 18:57:56 by anaouali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	check_walls(char **map, int number_of_lines, int len_of_lines)
 	return (0);
 }
 
-int	check_map(char *map)
+int	check_map(char *map, t_slg *slg)
 {
 	int	E_count;
 	int	P_count;
@@ -68,6 +68,8 @@ int	check_map(char *map)
 			E_count++;
 		if (map[i] == 'P')
 			P_count++;
+		if (map[i] == 'C')
+			slg->C_count += 1;
 		if (map[i] != 'C' && map[i] != 'E' && map[i] != 'P' && map[i] != '0'
 			&& map[i] != '1' && map[i] != '\n')
 			return (-1);
@@ -102,7 +104,7 @@ int	check_rectangle(char *map, t_slg *slg)
 
 int	check_all(char *map, t_slg *slg)
 {
-	if (check_map(map) == -1)
+	if (check_map(map, slg) == -1)
 	{
 		ft_putstr_fd("invalid map\n", 1);
 		return (-1);

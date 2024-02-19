@@ -6,7 +6,7 @@
 /*   By: anaouali <anaouali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 16:05:26 by anaouali          #+#    #+#             */
-/*   Updated: 2024/02/17 19:04:45 by anaouali         ###   ########.fr       */
+/*   Updated: 2024/02/19 18:59:51 by anaouali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,16 @@
 # include "libft/libft.h"
 # include "mlx/mlx.h"
 # include "mlx/mlx_int.h"
+# include <X11/X.h>
+# include <X11/keysym.h>
+
 
 typedef struct slg
 {
+	int 	C_count;
+	int		actual_c_counter;
+	int		player_x;
+	int		player_y;
 	void	*mlx;
 
 	char	**rectangle;
@@ -55,7 +62,9 @@ typedef struct slg
 	void	*door2;
 
 	void	*hero[4];
-	
+
+	void	*stairs;
+
 	void	*img_interior_walls;
 
 	char	*path;
@@ -75,7 +84,7 @@ void		convert_img2(t_slg *slg);
 // fonction de verification de map
 int			count_line(char *map);
 int			check_walls(char **map, int number_of_lines, int len_of_lines);
-int			check_map(char *map);
+int			check_map(char *map, t_slg *slg);
 int			ft_strlen_of_one_line(char *str);
 int			check_rectangle(char *map, t_slg *slg);
 int			check_all(char *map, t_slg *slg);
@@ -83,11 +92,11 @@ int			check(t_slg *slg);
 
 // fonciton d'initialisation de la map de base
 int			create_base_map(t_slg *slg);
-int		init_base(t_slg slg);
-void		init_background(t_slg slg);
-void		init_walls(t_slg slg);
-void		init_white_walls(t_slg slg);
-void		init_corner(t_slg slg);
-void		init_white_corners(t_slg slg);
+int			init_base(t_slg *slg);
+void		init_background(t_slg *slg);
+void		init_walls(t_slg *slg);
+void		init_white_walls(t_slg *slg);
+void		init_corner(t_slg *slg);
+void		init_white_corners(t_slg *slg);
 
 #endif
