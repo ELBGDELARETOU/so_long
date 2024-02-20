@@ -1,6 +1,6 @@
 NAME = so_long
 
-SRCS = img_to_xpm.c  check_map.c create_base_map.c
+SRCS = main.c img_to_xpm.c check_map.c create_base_map.c handle_moovs.c init_back_ground.c init_rest.c check_map2.c destroy_image.c
 
 LIBFT = libft.a
 

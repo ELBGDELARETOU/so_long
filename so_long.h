@@ -6,7 +6,7 @@
 /*   By: anaouali <anaouali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 16:05:26 by anaouali          #+#    #+#             */
-/*   Updated: 2024/02/19 18:59:51 by anaouali         ###   ########.fr       */
+/*   Updated: 2024/02/20 19:49:47 by anaouali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,9 @@
 # include <X11/X.h>
 # include <X11/keysym.h>
 
-
 typedef struct slg
 {
-	int 	C_count;
+	int		C_count;
 	int		actual_c_counter;
 	int		player_x;
 	int		player_y;
@@ -53,11 +52,6 @@ typedef struct slg
 
 	void	*key[4];
 
-	void	*key_outline_1;
-	void	*key_outline_2;
-	void	*key_outline_3;
-	void	*key_outline_4;
-
 	void	*door1;
 	void	*door2;
 
@@ -77,18 +71,26 @@ typedef struct slg
 	int		total_height;
 }			t_slg;
 
+int			closer(t_slg *slg);
+
 // fontion de convertion d image
-void		convert_img(t_slg *slg);
-void		convert_img2(t_slg *slg);
+int		convert_all_images(t_slg *slg);
+int		convert_img(t_slg *slg);
+int		convert_img2(t_slg *slg);
+int		convert_img3(t_slg *slg);
+int		convert_img4(t_slg *slg);
+int 	convert_img5(t_slg *slg);
+void	init_img(t_slg *slg);
+
 
 // fonction de verification de map
-int			count_line(char *map);
+int 		count_line(char *map);
 int			check_walls(char **map, int number_of_lines, int len_of_lines);
 int			check_map(char *map, t_slg *slg);
 int			ft_strlen_of_one_line(char *str);
 int			check_rectangle(char *map, t_slg *slg);
 int			check_all(char *map, t_slg *slg);
-int			check(t_slg *slg);
+int			check(t_slg *slg, char *argv);
 
 // fonciton d'initialisation de la map de base
 int			create_base_map(t_slg *slg);
@@ -98,5 +100,33 @@ void		init_walls(t_slg *slg);
 void		init_white_walls(t_slg *slg);
 void		init_corner(t_slg *slg);
 void		init_white_corners(t_slg *slg);
+
+// fonction handle mooves
+int			handle_w(t_slg *slg);
+int			handle_a(t_slg *slg);
+int			handle_d(t_slg *slg);
+int			handle_s(t_slg *slg);
+int			key_pressed(t_slg *slg);
+int			key_press(int key, t_slg *slg);
+
+// fonction d_initialisation map
+void		init_background(t_slg *slg);
+void		init_walls(t_slg *slg);
+void		init_white_walls(t_slg *slg);
+void		init_corner(t_slg *slg);
+void		init_white_corners(t_slg *slg);
+
+// fonction d initialisation reste
+void		init_interior_walls(t_slg *slg);
+void		init_exit(t_slg *slg);
+void		init_colectible(t_slg *slg);
+void		init_hero(t_slg *slg);
+
+//fonction de destroy
+void	destroy_image(t_slg *slg);
+void	destroy_image2(t_slg *slg);
+void	destroy_image3(t_slg *slg);
+void	destroy_image4(t_slg *slg);
+void	destroy_image5(t_slg *slg);
 
 #endif

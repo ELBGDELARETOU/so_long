@@ -6,14 +6,11 @@
 /*   By: anaouali <anaouali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 10:49:49 by anaouali          #+#    #+#             */
-/*   Updated: 2024/02/19 18:57:56 by anaouali         ###   ########.fr       */
+/*   Updated: 2024/02/20 18:07:34 by anaouali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-// cas error == -1
-// ok = 0
 
 int	count_line(char *map)
 {
@@ -24,8 +21,13 @@ int	count_line(char *map)
 	new_line = 0;
 	while (map[i])
 	{
-		if (map[i++] == '\n')
-			new_line++;
+		if (map[i] == '\n')
+			{
+				if (map[i + 1] == '\n')
+					return(0);
+				new_line++;
+			}
+		i++;
 	}
 	return (new_line);
 }
@@ -80,18 +82,10 @@ int	check_map(char *map, t_slg *slg)
 	return (0);
 }
 
-int	ft_strlen_of_one_line(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] != '\n')
-		i++;
-	return (i);
-}
-
 int	check_rectangle(char *map, t_slg *slg)
 {
+	if (!count_line(map))
+		return (-1);
 	slg->number_of_lines = count_line(map);
 	slg->rectangle = malloc(slg->number_of_lines + 1);
 	if (!slg->rectangle)
@@ -102,41 +96,12 @@ int	check_rectangle(char *map, t_slg *slg)
 			slg->len_of_lines));
 }
 
-int	check_all(char *map, t_slg *slg)
+int	ft_strlen_of_one_line(char *str)
 {
-	if (check_map(map, slg) == -1)
-	{
-		ft_putstr_fd("invalid map\n", 1);
-		return (-1);
-	}
-	if (check_rectangle(map, slg) == -1)
-	{
-		ft_putstr_fd("invalid map\n", 1);
-		return (-1);
-	}
-	else
-		ft_putstr_fd("good map", 1);
-	return (0);
-}
+	int	i;
 
-int	check(t_slg *slg)
-{
-	char	*line;
-	char	*map;
-	int		fd;
-
-	map = "";
-	fd = open("./map0.ber", O_RDONLY);
-	line = get_next_line(fd);
-	map = ft_strjoin(map, line);
-	while (line)
-	{
-		line = get_next_line(fd);
-		if (line == NULL)
-			break ;
-		map = ft_strjoin(map, line);
-	}
-	if (check_all(map, slg) == -1)
-		return (-1);
-	return (0);
+	i = 0;
+	while (str[i] != '\n')
+		i++;
+	return (i);
 }
