@@ -6,7 +6,7 @@
 /*   By: anaouali <anaouali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 16:05:26 by anaouali          #+#    #+#             */
-/*   Updated: 2024/02/20 19:49:47 by anaouali         ###   ########.fr       */
+/*   Updated: 2024/02/21 15:46:42 by anaouali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@
 
 typedef struct slg
 {
+	int		backslash_N_count;
+	int		E_count;
+	int		P_count;
+	
 	int		C_count;
 	int		actual_c_counter;
 	int		player_x;
@@ -74,17 +78,16 @@ typedef struct slg
 int			closer(t_slg *slg);
 
 // fontion de convertion d image
-int		convert_all_images(t_slg *slg);
-int		convert_img(t_slg *slg);
-int		convert_img2(t_slg *slg);
-int		convert_img3(t_slg *slg);
-int		convert_img4(t_slg *slg);
-int 	convert_img5(t_slg *slg);
-void	init_img(t_slg *slg);
-
+int			convert_all_images(t_slg *slg);
+int			convert_img(t_slg *slg);
+int			convert_img2(t_slg *slg);
+int			convert_img3(t_slg *slg);
+int			convert_img4(t_slg *slg);
+int			convert_img5(t_slg *slg);
+void		init_img(t_slg *slg);
 
 // fonction de verification de map
-int 		count_line(char *map);
+int			count_line(char *map);
 int			check_walls(char **map, int number_of_lines, int len_of_lines);
 int			check_map(char *map, t_slg *slg);
 int			ft_strlen_of_one_line(char *str);
@@ -121,12 +124,22 @@ void		init_interior_walls(t_slg *slg);
 void		init_exit(t_slg *slg);
 void		init_colectible(t_slg *slg);
 void		init_hero(t_slg *slg);
+int			colectible(t_slg *slg);
 
-//fonction de destroy
-void	destroy_image(t_slg *slg);
-void	destroy_image2(t_slg *slg);
-void	destroy_image3(t_slg *slg);
-void	destroy_image4(t_slg *slg);
-void	destroy_image5(t_slg *slg);
+
+// fonction de destroy/clean
+void		destroy_image(t_slg *slg);
+void		destroy_image2(t_slg *slg);
+void		destroy_image3(t_slg *slg);
+void		destroy_image4(t_slg *slg);
+void		destroy_image5(t_slg *slg);
+void		free_double_tab(char **tab);
+int			closer(t_slg *slg);
+void		free_double_tab(char **tab);
+
+//gestion des mouvements
+int			key_press(int key, t_slg *slg);
+
+
 
 #endif

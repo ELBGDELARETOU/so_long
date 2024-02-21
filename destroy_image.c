@@ -6,7 +6,7 @@
 /*   By: anaouali <anaouali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:12:11 by anaouali          #+#    #+#             */
-/*   Updated: 2024/02/20 20:01:32 by anaouali         ###   ########.fr       */
+/*   Updated: 2024/02/21 11:15:46 by anaouali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	destroy_image(t_slg *slg)
 
 void	destroy_image2(t_slg *slg)
 {
+	if (slg->img_long_wall_left)
+		mlx_destroy_image(slg->mlx, slg->img_long_wall_left);
 	if (slg->img_long_wall_right)
 		mlx_destroy_image(slg->mlx, slg->img_long_wall_right);
 	if (slg->img_floor)
@@ -49,10 +51,13 @@ void	destroy_image3(t_slg *slg)
 		mlx_destroy_image(slg->mlx, slg->img_white_top);
 	if (slg->img_white_bottom)
 		mlx_destroy_image(slg->mlx, slg->img_white_bottom);
+	if (slg->img_white_left)
+		mlx_destroy_image(slg->mlx, slg->img_white_left);
 	if (slg->img_white_right)
 		mlx_destroy_image(slg->mlx, slg->img_white_right);
 	if (slg->img_interior_walls)
 		mlx_destroy_image(slg->mlx, slg->img_interior_walls);
+	
 }
 void	destroy_image4(t_slg *slg)
 {

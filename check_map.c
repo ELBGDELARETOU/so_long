@@ -6,7 +6,7 @@
 /*   By: anaouali <anaouali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 10:49:49 by anaouali          #+#    #+#             */
-/*   Updated: 2024/02/20 18:07:34 by anaouali         ###   ########.fr       */
+/*   Updated: 2024/02/21 15:35:48 by anaouali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ int	count_line(char *map)
 	while (map[i])
 	{
 		if (map[i] == '\n')
-			{
-				if (map[i + 1] == '\n')
-					return(0);
-				new_line++;
-			}
+		{
+			if (map[i + 1] == '\n')
+				return (0);
+			new_line++;
+		}
 		i++;
 	}
 	return (new_line);
@@ -57,27 +57,26 @@ int	check_walls(char **map, int number_of_lines, int len_of_lines)
 
 int	check_map(char *map, t_slg *slg)
 {
-	int	E_count;
-	int	P_count;
 	int	i;
-
-	E_count = 0;
-	P_count = 0;
 	i = 0;
 	while (map[i] != '\0')
 	{
+		if (map[i] == '\n')
+			slg->backslash_N_count++;
+		if (map[i] == '\n' && (map[i + 1] == '\n' || map[i + 1] == '\0'))
+			return (-1);
 		if (map[i] == 'E')
-			E_count++;
+			slg->E_count++;
 		if (map[i] == 'P')
-			P_count++;
+			slg->P_count++;
 		if (map[i] == 'C')
 			slg->C_count += 1;
-		if (map[i] != 'C' && map[i] != 'E' && map[i] != 'P' && map[i] != '0'
-			&& map[i] != '1' && map[i] != '\n')
+		if ((map[i] != 'C' && map[i] != 'E' && map[i] != 'P' && map[i] != '0'
+				&& map[i] != '1' && map[i] != '\n') || map[0] == '\n')
 			return (-1);
 		i++;
 	}
-	if (E_count != 1 || P_count != 1)
+	if (slg->E_count != 1 || slg->P_count != 1 || slg->backslash_N_count > 13)
 		return (-1);
 	return (0);
 }
@@ -87,11 +86,9 @@ int	check_rectangle(char *map, t_slg *slg)
 	if (!count_line(map))
 		return (-1);
 	slg->number_of_lines = count_line(map);
-	slg->rectangle = malloc(slg->number_of_lines + 1);
-	if (!slg->rectangle)
-		return (-1);
 	slg->len_of_lines = ft_strlen_of_one_line(map);
 	slg->rectangle = ft_split(map, '\n');
+	free(map);
 	return (check_walls(slg->rectangle, slg->number_of_lines,
 			slg->len_of_lines));
 }

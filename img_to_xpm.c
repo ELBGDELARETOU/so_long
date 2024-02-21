@@ -6,7 +6,7 @@
 /*   By: anaouali <anaouali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 18:07:26 by anaouali          #+#    #+#             */
-/*   Updated: 2024/02/20 18:12:02 by anaouali         ###   ########.fr       */
+/*   Updated: 2024/02/21 11:10:01 by anaouali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int	convert_img3(t_slg *slg)
 		return (0);
 	slg->img_white_left = mlx_xpm_file_to_image(slg->mlx,
 			"img/White-mid-left.xpm", &slg->img_width, &slg->img_height);
-	if (!slg->img_white_bottom_left)
+	if (!slg->img_white_left)
 		return (0);
 	slg->img_white_right = mlx_xpm_file_to_image(slg->mlx,
 			"img/White-mid-right.xpm", &slg->img_width, &slg->img_height);

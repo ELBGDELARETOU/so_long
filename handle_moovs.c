@@ -6,7 +6,7 @@
 /*   By: anaouali <anaouali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 10:34:41 by anaouali          #+#    #+#             */
-/*   Updated: 2024/02/20 14:53:12 by anaouali         ###   ########.fr       */
+/*   Updated: 2024/02/21 15:41:25 by anaouali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	handle_w(t_slg *slg)
 			return (0);
 		}
 	}
-	// bordure_checker
 	if (slg->rectangle[slg->player_y - 1][slg->player_x] == '1')
 		return (0);
 	if (slg->rectangle[slg->player_y - 1][slg->player_x] == 'E'

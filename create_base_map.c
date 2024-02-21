@@ -6,7 +6,7 @@
 /*   By: anaouali <anaouali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 10:56:18 by anaouali          #+#    #+#             */
-/*   Updated: 2024/02/20 20:05:08 by anaouali         ###   ########.fr       */
+/*   Updated: 2024/02/21 15:42:42 by anaouali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,29 +24,6 @@ int	init_base(t_slg *slg)
 	init_colectible(slg);
 	init_hero(slg);
 	return (0);
-}
-
-void	free_double_tab(void **tab)
-{
-	int	i;
-
-	i = 0;
-	while (tab[i++])
-		free(tab[i]);
-}
-
-int	closer(t_slg *slg)
-{
-	destroy_image(slg);
-	destroy_image2(slg);
-	destroy_image3(slg);
-	destroy_image4(slg);
-	destroy_image5(slg);
-	if (slg->mlx_win)
-		mlx_destroy_window(slg->mlx, slg->mlx_win);
-	if (slg->mlx)
-		(mlx_destroy_display(slg->mlx), free(slg->mlx));
-	exit(0);
 }
 
 int	colectible(t_slg *slg)
@@ -69,27 +46,6 @@ int	colectible(t_slg *slg)
 		}
 	}
 	return (0);
-}
-
-int	key_press(int key, t_slg *slg)
-{
-	colectible(slg);
-	if (key == XK_Escape)
-		closer(slg);
-	else if (key == XK_w && (!handle_w(slg)))
-		return (-1);
-	else if (key == XK_a && (!handle_a(slg)))
-		return (-1);
-	else if (key == XK_d && (!handle_d(slg)))
-		return (-1);
-	else if (key == XK_s && (!handle_s(slg)))
-		return (-1);
-	if (key == XK_w || key == XK_a || key == XK_d || key == XK_s)
-	{
-		key_pressed(slg);
-		return (0);
-	}
-	return (-1);
 }
 
 int	convert_all_images(t_slg *slg)
